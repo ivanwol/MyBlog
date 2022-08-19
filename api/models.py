@@ -13,3 +13,9 @@ class Comment(models.Model):
     owner = models.ForeignKey('auth.User', related_name='comments', on_delete=models.CASCADE)
     post = models.ForeignKey('Post', related_name='comments', on_delete=models.CASCADE)
     body = models.TextField(blank=True, default='')
+
+
+class Category(models.Model):
+    post = models.ForeignKey('Post', related_name='category', on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    owner = models.ForeignKey('auth.User', related_name='category', on_delete=models.CASCADE)
